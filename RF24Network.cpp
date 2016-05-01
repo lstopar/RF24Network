@@ -54,7 +54,10 @@ bool is_valid_address( uint16_t node );
 {
 }
 #elif !defined (DUAL_HEAD_RADIO)
-RF24Network::RF24Network( RF24& _radio ): radio(_radio), next_frame(frame_queue) 
+RF24Network::RF24Network( RF24& _radio ):
+		radio(_radio),
+		next_frame(frame_queue),
+		returnSysMsgs(false)
 {
   #if !defined ( DISABLE_FRAGMENTATION )
   frag_queue.message_buffer=&frag_queue_message_buffer[0];
